@@ -1,4 +1,5 @@
-# generator-dojo-widget [![Build Status](https://secure.travis-ci.org/steveoh/generator-dojo-widget.png?branch=master)](https://travis-ci.org/steveoh/generator-dojo-widget)
+# generator-dojo-widget 
+[![Build Status](https://travis-ci.org/steveoh/generator-dojo-widget.png?branch=master)](https://travis-ci.org/steveoh/generator-dojo-widget)
 
 > [Yeoman](http://yeoman.io) generator
 
