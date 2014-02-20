@@ -22,7 +22,7 @@ describe('dojo-widget generator', function() {
       // add files you expect to exist here.
       'app/temp/test.js',
       'app/temp/templates/test.html',
-      'app/tests/test.html',
+      'app/tests/testTests.html',
       'app/tests/spec/Spec_test.js'
     ];
 
