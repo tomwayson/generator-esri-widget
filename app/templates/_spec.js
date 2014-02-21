@@ -3,24 +3,16 @@ require([
 
     'dojo/_base/window',
 
-    'dojo/dom-construct',
-    'dojo/dom-style',
-    'dojo/dom-class',
-
-    'dojo/query'
+    'dojo/dom-construct'
 ], function(
     WidgetUnderTest,
 
     win,
 
-    domConstruct,
-    domStyle,
-    domClass,
-
-    query
+    domConstruct
 ) {
 
-    var widget, select;
+    var widget;
 
     afterEach(function() {
         if (widget) {
