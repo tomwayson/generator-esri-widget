@@ -1,26 +1,18 @@
 require([
-    '<%= pathName %>',
+    '<%= path %><%= widgetName %>',
 
     'dojo/_base/window',
 
-    'dojo/dom-construct',
-    'dojo/dom-style',
-    'dojo/dom-class',
-
-    'dojo/query'
+    'dojo/dom-construct'
 ], function(
     WidgetUnderTest,
 
     win,
 
-    domConstruct,
-    domStyle,
-    domClass,
-
-    query
+    domConstruct
 ) {
 
-    var widget, select;
+    var widget;
 
     afterEach(function() {
         if (widget) {
@@ -29,7 +21,7 @@ require([
         }
     });
 
-    describe('<%= pathName %>', function() {
+    describe('<%= path %><%= widgetName %>', function() {
         describe('Sanity', function() {
             beforeEach(function() {
                 widget = new WidgetUnderTest(null, domConstruct.create('div', null, win.body()));

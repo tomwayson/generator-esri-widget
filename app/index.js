@@ -20,37 +20,29 @@ var DojoWidgetGenerator = yeoman.generators.Base.extend({
 
     var prompts = [{
       name: 'widgetName',
-      message: 'What do you want to call your widget?',
-      default: 'widget'
+      message: 'Widget Name:',
+      default: 'Widget'
     }, {
       name: 'description',
-      message: 'What does this widget do?',
-      default: 'really cool stuff'
-    }, {
-      name: 'consoleLog',
-      message: 'What do you want to your console statements to look like?',
-      default: 'app.widget'
-    }, {
-      name: 'packageName',
-      message: 'What is your widgets require package name?',
-      default: 'app'
-    }, {
-      name: 'pathName',
-      message: 'What is your widgets require path?',
-      default: 'app/widget'
+      message: 'Description:'
     }, {
       name: 'path',
-      message: 'Where do you want your widget? This is relative to where you are now!',
-      default: 'app/'
+      message: 'Path to widget:',
+      default: 'app'
+    }, {
+      type: 'confirm',
+      name: 'widgetsInTemplate',
+      message: 'Will the template contain other widgets?',
+      default: true
     }];
 
     this.prompt(prompts, function(props) {
       this.widgetName = props.widgetName;
-      this.consoleLog = props.consoleLog;
-      this.pathName = props.pathName;
-      this.packageName = props.packageName;
-      this.path = props.path;
       this.description = props.description;
+      this.path = props.path + '/';
+      this.widgetsInTemplate = props.widgetsInTemplate;
+      this.consoleLog = this.path + this.widgetName;
+      this.packageName = this.path.split('/')[0];
 
       done();
     }.bind(this));
@@ -59,8 +51,9 @@ var DojoWidgetGenerator = yeoman.generators.Base.extend({
   app: function() {
     this.template('_widget.js', this.path + this.widgetName + '.js');
     this.template('_template.html', this.path + 'templates/' + this.widgetName + '.html');
-    this.template('_test_page.html', this.path + '../tests/' + this.widgetName + 'Tests.html');
-    this.template('_spec.js', this.path + '../tests/spec/Spec_' + this.widgetName + '.js');
+    this.template('_test_page.html', this.path + 'tests/' + this.widgetName + 'Tests.html');
+    this.template('_spec.js', this.path + 'tests/spec/Spec' + this.widgetName + '.js');
+    this.template('_widget.css', this.path + 'resources/' + this.widgetName + '.css');
   },
 
   projectfiles: function() {

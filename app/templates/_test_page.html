@@ -10,6 +10,7 @@
     <link rel='stylesheet' href='http://js.arcgis.com/3.7/js/dojo/dijit/themes/claro/claro.css'>
     <link rel="stylesheet" type="text/css" href="http://js.arcgis.com/3.7/js/esri/css/esri.css" />
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../resources/<%= widgetName %>.css">
     <style type='text/css'>
     
     </style>
@@ -17,7 +18,7 @@
     <!-- JAVASCRIPT -->
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-    <script type='text/javascript' src='http://js.arcgis.com/3.7'></script>
+    <script type='text/javascript' src='http://js.arcgis.com/3.8'></script>
     <script type="text/javascript">
     var projectUrl = location.pathname.replace(/\/[^\/]+$/, "") + '/';
     var widgetUnderTest;
@@ -25,10 +26,10 @@
     require({
         packages: [{
             name: '<%= packageName %>',
-            location: projectUrl + '../../'
+            location: projectUrl + '../'
         }]
     }, [
-        '<%= pathName %>',
+        '<%= path %><%= widgetName %>',
 
         'dojo/domReady!'
     ], function(Module) {
