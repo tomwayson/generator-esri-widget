@@ -1,5 +1,5 @@
 require([
-    '<%= pathName %>',
+    '<%= path %><%= widgetName %>',
 
     'dojo/_base/window',
 
@@ -21,7 +21,7 @@ require([
         }
     });
 
-    describe('<%= pathName %>', function() {
+    describe('<%= path %><%= widgetName %>', function() {
         describe('Sanity', function() {
             beforeEach(function() {
                 widget = new WidgetUnderTest(null, domConstruct.create('div', null, win.body()));

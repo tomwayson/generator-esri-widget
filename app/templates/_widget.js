@@ -1,19 +1,22 @@
 define([
-    'dojo/text!<%=path%>templates/<%=widgetName%>.html',
+    'dojo/text!./templates/<%=widgetName%>.html',
 
     'dojo/_base/declare',
 
     'dijit/_WidgetBase',
-    'dijit/_TemplatedMixin'
+    'dijit/_TemplatedMixin',
+    'dijit/_WidgetsInTemplateMixin'
+
 ], function(
     template,
 
     declare,
 
     _WidgetBase,
-    _TemplatedMixin
+    _TemplatedMixin,
+    _WidgetsInTemplateMixin
 ) {
-    return declare([_WidgetBase, _TemplatedMixin], {
+    return declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], {
         // description:
         //      **Summary**: <%= description %>
         //      <p>
@@ -35,8 +38,8 @@ define([
         // |    }, "node");
 
         templateString: template,
-
-        baseClass: '<%= widgetName %>',
+        baseClass: '<%= _.dasherize(widgetName).slice(1) %>',
+        widgetsInTemplate: <%= widgetsInTemplate %>,
 
         // Properties to be sent into constructor
 

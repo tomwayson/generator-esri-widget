@@ -20,19 +20,18 @@ describe('dojo-widget generator', function() {
   it('creates expected files', function(done) {
     var expected = [
       // add files you expect to exist here.
-      'app/temp/test.js',
-      'app/temp/templates/test.html',
+      'app/test.js',
+      'app/templates/test.html',
       'app/tests/testTests.html',
-      'app/tests/spec/Spec_test.js'
+      'app/tests/spec/Spectest.js',
+      'app/resources/test.css'
     ];
 
     helpers.mockPrompt(this.app, {
       'widgetName': 'test',
-      'consoleLog': '',
-      'pathName': '',
-      'packageName': '',
-      'path': 'app/temp/',
-      'description': ''
+      'description': 'test description',
+      'path': 'app',
+      'widgetsInTemplate': true
     });
 
     this.app.options['skip-install'] = true;
