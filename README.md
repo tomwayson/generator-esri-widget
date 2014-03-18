@@ -6,25 +6,9 @@
 
 ## Getting Started
 
-### What is Yeoman?
-
-Trick question. It's not a thing. It's this guy:
-
-![](http://i.imgur.com/JHaAlBJ.png)
-
-Basically, he wears a top hat, lives in your computer, and waits for you to tell him what kind of application you wish to create.
-
-Not every new computer comes with a Yeoman pre-installed. He lives in the [npm](https://npmjs.org) package repository. You only have to ask for him once, then he packs up and moves into your hard drive. *Make sure you clean up, he likes new and shiny things.*
-
 ```
 $ npm install -g yo
 ```
-
-### Yeoman Generators
-
-Yeoman travels light. He didn't pack any generators when he moved in. You can think of a generator like a plug-in. You get to choose what type of application you wish to create, such as a Backbone application or even a Chrome extension.
-
-To install generator-dojo-widget from npm, run:
 
 ```
 $ npm install -g generator-dojo-widget
@@ -36,12 +20,21 @@ Finally, initiate the generator:
 $ yo dojo-widget
 ```
 
-### Getting To Know Yeoman
+### What will happen
 
-Yeoman has a heart of gold. He's a person with feelings and opinions, but he's very easy to work with. If you think he's too opinionated, he can be easily convinced.
+A few opinionated files will be created. If you created a widget called `test`, the following files will be created for you.
 
-If you'd like to get to know Yeoman better and meet some of his friends, [Grunt](http://gruntjs.com) and [Bower](http://bower.io), check out the complete [Getting Started Guide](https://github.com/yeoman/yeoman/wiki/Getting-Started).
+      'app/test.js',
+      'app/templates/test.html',
+      'app/tests/testTests.html',
+      'app/tests/spec/Spectest.js',
+      'app/resources/test.css'
 
+The `/test.js` file will contain your widget logic.  
+`/templates/test.html` will be an empty template file if your widget has a template.  
+`tests/testTests.html` is an html page that you can load to see your widget in isolation.  
+`tests/spec/Spectest.js` is a [jasmine](http://jasmine.github.io/) test spec file with a default test instantiating your new widget.  
+`resources/test.css` is the style sheet containing styles specific to your new widget.  
 
 ## License
 
