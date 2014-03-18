@@ -16,7 +16,7 @@ require([
 
     afterEach(function() {
         if (widget) {
-            widget.destroy();
+            widget.destroyRecursive();
             widget = null;
         }
     });
