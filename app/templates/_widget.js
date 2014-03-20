@@ -18,24 +18,7 @@ define([
 ) {
     return declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], {
         // description:
-        //      **Summary**: <%= description %>
-        //      <p>
-        //      </p>
-        //      **Owner(s)**:
-        //      </p>
-        //      <p>
-        //      **Test Page**: <a href=""></a>
-        //      </p>
-        //      <p>
-        //      **Description**:  <%= description %>
-        //      </p>
-        //      <p>
-        //      **Required Files**:
-        //      </p>
-        //      <ul><li></li></ul>
-        // example:
-        // |    var widget = new <%= widgetName %>({
-        // |    }, "node");
+        //      <%= description %>
 
         templateString: template,
         baseClass: '<%= _.dasherize(widgetName).slice(1) %>',
