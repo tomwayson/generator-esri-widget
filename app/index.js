@@ -42,7 +42,12 @@ var DojoWidgetGenerator = yeoman.generators.Base.extend({
       this.path = props.path + '/';
       this.widgetsInTemplate = props.widgetsInTemplate;
       this.consoleLog = this.path + this.widgetName;
-      this.packageName = this.path.split('/')[0];
+      var splitPath = this.path.split('/');
+      this.packageName = splitPath[0];
+      this.testPageBaseUrl = '';
+      for (var x = 0; x < splitPath.length; x++) {
+        this.testPageBaseUrl += '../';
+      }
 
       done();
     }.bind(this));

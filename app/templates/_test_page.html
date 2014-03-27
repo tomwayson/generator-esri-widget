@@ -7,37 +7,36 @@
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 
     <!-- CSS -->        
-    <link rel='stylesheet' href='http://js.arcgis.com/3.7/js/dojo/dijit/themes/claro/claro.css'>
-    <link rel="stylesheet" type="text/css" href="http://js.arcgis.com/3.7/js/esri/css/esri.css" />
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="<%= testPageBaseUrl %>esri/css/esri.css" />
+    <link rel="stylesheet" href="<%= testPageBaseUrl %>bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="../resources/<%= widgetName %>.css">
     <style type='text/css'>
-    
+        body {
+            padding: 50px;
+        }
     </style>
 
     <!-- JAVASCRIPT -->
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-    <script type='text/javascript' src='http://js.arcgis.com/3.8'></script>
+    <script type="text/javascript" src="<%= testPageBaseUrl %>jquery/dist/jquery.js"></script>
+    <script type='text/javascript' src="<%= testPageBaseUrl %>bootstrap/dist/js/bootstrap.js"></script>
+    <script type='text/javascript' src="<%= testPageBaseUrl %>dojo/dojo.js"></script>
     <script type="text/javascript">
-    var projectUrl = location.pathname.replace(/\/[^\/]+$/, "") + '/';
-    var widgetUnderTest;
+        var baseUrl = window.location.pathname.replace(/\/[^\/]+$/, '') + '/' + '<%= testPageBaseUrl %>';
+        var widgetUnderTest;
 
-    require({
-        packages: [{
-            name: '<%= packageName %>',
-            location: projectUrl + '../'
-        }]
-    }, [
-        '<%= path %><%= widgetName %>',
+        require({
+            baseUrl: baseUrl,
+            packages: ['app', 'esri', 'dojo', 'dijit', 'dojox']
+        }, [
+            '<%= path %><%= widgetName %>',
 
-        'dojo/domReady!'
-    ], function(Module) {
-        widgetUnderTest = new Module({
-        }, 'node');
+            'dojo/domReady!'
+        ], function(Module) {
+            widgetUnderTest = new Module({
+            }, 'node');
 
-        widgetUnderTest.startup();
-    });
+            widgetUnderTest.startup();
+        });
 </script>
 </head>
 <body class='claro'>
