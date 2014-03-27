@@ -28,12 +28,14 @@ define([
 
         postCreate: function() {
             // summary:
-            //    Overrides method of same name in dijit._Widget.
+            //      Overrides method of same name in dijit._Widget.
             // tags:
-            //    private
+            //      private
             console.log('<%= consoleLog %>::postCreate', arguments);
 
             this.setupConnections();
+
+            this.inherited(arguments);
         },
         setupConnections: function() {
             // summary:
