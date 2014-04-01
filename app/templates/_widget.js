@@ -15,7 +15,7 @@ define([
     _WidgetBase,<% if(widgetsInTemplate) { %>
     _TemplatedMixin,
     _WidgetsInTemplateMixin<% } else { %>
-    _TemplatedMixin<%}%>    
+    _TemplatedMixin<%}%>
 ) {<% if(widgetsInTemplate) { %>
     return declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], {<% } else { %>
     return declare([_WidgetBase, _TemplatedMixin], {<%}%>
