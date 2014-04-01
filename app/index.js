@@ -1,14 +1,10 @@
 'use strict';
-var util = require('util');
-var path = require('path');
+// var util = require('util');
+// var path = require('path');
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 
 var DojoWidgetGenerator = yeoman.generators.Base.extend({
-  init: function() {
-
-  },
-
   askFor: function() {
     var done = this.async();
 
@@ -16,7 +12,8 @@ var DojoWidgetGenerator = yeoman.generators.Base.extend({
     console.log(this.yeoman);
 
     // replace it with a short and sweet description of your generator
-    console.log(chalk.magenta('You\'re using the fantastic DojoWidget generator.'));
+    console.log(chalk.magenta('Welcome to the dojo-widget generator. It is best ' +
+      'to run this widget from the parent folder of your package.'));
 
     var prompts = [{
       name: 'widgetName',
@@ -42,6 +39,7 @@ var DojoWidgetGenerator = yeoman.generators.Base.extend({
       this.path = props.path + '/';
       this.widgetsInTemplate = props.widgetsInTemplate;
       this.consoleLog = this.path + this.widgetName;
+      this.consoleLog = this.consoleLog.replace(/\//g, '.');
       var splitPath = this.path.split('/');
       this.packageName = splitPath[0];
       this.testPageBaseUrl = '';
