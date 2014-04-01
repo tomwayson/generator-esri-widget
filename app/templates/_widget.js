@@ -3,26 +3,29 @@ define([
 
     'dojo/_base/declare',
 
-    'dijit/_WidgetBase',
+    'dijit/_WidgetBase',<% if(widgetsInTemplate) { %>
     'dijit/_TemplatedMixin',
-    'dijit/_WidgetsInTemplateMixin'
-
+    'dijit/_WidgetsInTemplateMixin'<% } else { %>
+    'dijit/_TemplatedMixin'<%}%>
 ], function(
     template,
 
     declare,
 
-    _WidgetBase,
+    _WidgetBase,<% if(widgetsInTemplate) { %>
     _TemplatedMixin,
-    _WidgetsInTemplateMixin
+    _WidgetsInTemplateMixin<% } else { %>
+    _TemplatedMixin<%}%>    
 ) {
-    return declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], {
+    <% if(widgetsInTemplate) { %>
+    return declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], {<% } else { %>
+    return declare([_WidgetBase, _TemplatedMixin], {<%}%>
         // description:
         //      <%= description %>
 
         templateString: template,
-        baseClass: '<%= _.dasherize(widgetName).slice(1) %>',
-        widgetsInTemplate: <%= widgetsInTemplate %>,
+        baseClass: '<%= _.dasherize(widgetName).slice(1) %>',<% if(widgetsInTemplate) { %>
+        widgetsInTemplate: true,<% }%>
 
         // Properties to be sent into constructor
 
