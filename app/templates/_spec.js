@@ -1,13 +1,9 @@
 require([
     '<%= path %><%= widgetName %>',
 
-    'dojo/_base/window',
-
     'dojo/dom-construct'
 ], function(
     WidgetUnderTest,
-
-    win,
 
     domConstruct
 ) {
@@ -19,7 +15,7 @@ require([
         };
 
         beforeEach(function() {
-            widget = new WidgetUnderTest(null, domConstruct.create('div', null, win.body()));
+            widget = new WidgetUnderTest(null, domConstruct.create('div', null, document.body));
         });
 
         afterEach(function() {
