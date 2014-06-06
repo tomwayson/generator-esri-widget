@@ -1,7 +1,7 @@
 {
   "name": "generator-dojo-widget",
   "version": "0.1.7",
-  "description": "Yeoman generator",
+  "description": "Yeoman generator for creating dojo widgets",
   "license": "MIT",
   "main": "app/index.js",
   "repository": "steveoh/generator-dojo-widget",
@@ -20,13 +20,17 @@
     "app"
   ],
   "keywords": [
-    "yeoman-generator"
+    "yeoman-generator",
+    "dojo",
+    "widget"
   ],
   "dependencies": {
-    "yeoman-generator": "~0.16.0",
-    "chalk": "~0.4.0"
+    "chalk": "*",
+    "yeoman-generator": "^0.17.0"
   },
   "devDependencies": {
+    "grunt": "~0.4",
+    "grunt-bump": "0.0.14",
     "mocha": "*"
   },
   "peerDependencies": {
