@@ -3,5 +3,5 @@ node_js:
   - '0.10'
 before_install:
   - currentfolder=${PWD##*/}
-  - if [ "$currentfolder" != 'generator-dojo-widget' ]; then cd .. && eval "mv $currentfolder generator-dojo-widget" && cd generator-dojo-widget; fi
+  - if [ "$currentfolder" != 'generator-esri-widget' ]; then cd .. && eval "mv $currentfolder generator-esri-widget" && cd generator-esri-widget; fi
 

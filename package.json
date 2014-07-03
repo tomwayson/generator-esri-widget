@@ -1,14 +1,14 @@
 {
-  "name": "generator-dojo-widget",
-  "version": "0.1.7",
-  "description": "Yeoman generator for creating dojo widgets",
+  "name": "generator-esri-widget",
+  "version": "0.1.0",
+  "description": "Yeoman generator for creating Esri widgets",
   "license": "MIT",
   "main": "app/index.js",
-  "repository": "steveoh/generator-dojo-widget",
+  "repository": "tomwayson/generator-esri-widget",
   "author": {
-    "name": "steve",
-    "email": "sgourley@utah.gov",
-    "url": "https://github.com/steveoh"
+    "name": "Tom Wayson",
+    "email": "tom@tomwayson.com",
+    "url": "https://github.com/tomwayson"
   },
   "engines": {
     "node": ">=0.10.0"
@@ -21,6 +21,7 @@
   ],
   "keywords": [
     "yeoman-generator",
+    "esri",
     "dojo",
     "widget"
   ],

@@ -10,7 +10,7 @@ var DojoWidgetGenerator = yeoman.generators.Base.extend({
     console.log(this.yeoman);
 
     // replace it with a short and sweet description of your generator
-    console.log(chalk.magenta('Welcome to the dojo-widget generator.'));
+    console.log(chalk.magenta('Welcome to the esri-widget generator.'));
     console.log(chalk.green('It is best to run this widget from the parent folder of your package.'));
     console.log(chalk.green('So like the', chalk.underline.bgWhite('/src') + ' folder'));
 
