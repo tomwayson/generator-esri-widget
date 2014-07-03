@@ -1,6 +1,6 @@
 /*
- * generator-dojo-widget
- * github.com/steveoh/generator-dojo-widget
+ * generator-esri-widget
+ * github.com/tomwayson/generator-esri-widget
  *
  * Copyright (c) 2014 steveoh
  * Licensed under the MIT license.
