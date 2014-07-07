@@ -1,46 +1,46 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE html>
 <html>
-<head>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no"/>
     <title><%= widgetName %> Tests</title>
+    <link rel="stylesheet" href="http://js.arcgis.com/3.9/js/esri/css/esri.css">
+    <style>
+        @import url('tests.css');
+        @import url('../resources/<%= widgetName %>.css');
 
-    <!-- META TAGS -->
-    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-
-    <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="<%= testPageBaseUrl %>dijit/themes/claro/claro.css" />
-    <link rel="stylesheet" type="text/css" href="<%= testPageBaseUrl %>esri/css/esri.css" />
-    <link rel="stylesheet" href="<%= testPageBaseUrl %>bootstrap/dist/css/bootstrap.css">
-    <link rel="stylesheet" href="../resources/<%= widgetName %>.css">
-    <style type='text/css'>
-        body {
-            padding: 50px;
-        }
+        /* override default styles here */
     </style>
-
-    <!-- JAVASCRIPT -->
-    <script type="text/javascript" src="<%= testPageBaseUrl %>jquery/dist/jquery.js"></script>
-    <script type='text/javascript' src="<%= testPageBaseUrl %>bootstrap/dist/js/bootstrap.js"></script>
-    <script type='text/javascript' src="<%= testPageBaseUrl %>dojo/dojo.js"></script>
+</head>
+  <body>
+    <div id="map"></div>
+    <div id="widgetContainer">
+        <div id="widgetNode"></div>
+    </div>
+    <script src="http://js.arcgis.com/3.9/"></script>
     <script type="text/javascript">
-        var baseUrl = window.location.pathname.replace(/\/[^\/]+$/, '') + '/' + '<%= testPageBaseUrl %>';
+        var testsUrl = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/')) + '/';
         var widgetUnderTest;
+        var map;
 
-        require({
-            baseUrl: baseUrl,
-            packages: ['app', 'esri', 'dojo', 'dijit', 'dojox']
-        }, [
-            '<%= path %><%= widgetName %>',
+        require(["esri/map",
+            testsUrl + "../<%= widgetName %>.js",
+            "dojo/domReady!"
+        ], function(Map, Module) {
 
-            'dojo/domReady!'
-        ], function(Module) {
+            // init map
+            map = new Map("map",{
+                basemap: "topo",
+                center: [-122.45,37.75],
+                zoom: 13,
+                sliderStyle: "small"
+            });
+
+            // init widget
             widgetUnderTest = new Module({
-            }, 'node');
-
+            }, 'widgetNode');
             widgetUnderTest.startup();
         });
-</script>
-</head>
-<body class='claro'>
-    <div id="node"></div>
+    </script>
 </body>
 </html>

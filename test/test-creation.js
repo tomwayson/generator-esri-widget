@@ -22,6 +22,7 @@ describe('esri-widget generator', function() {
       // add files you expect to exist here.
       'app/test.js',
       'app/templates/test.html',
+      'app/tests/tests.css',
       'app/tests/testTests.html',
       'app/tests/spec/Spectest.js',
       'app/resources/test.css'

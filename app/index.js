@@ -51,6 +51,7 @@ var DojoWidgetGenerator = yeoman.generators.Base.extend({
   },
 
   app: function() {
+    this.copy('tests.css', this.path + 'tests/tests.css');
     this.template('_widget.js', this.path + this.widgetName + '.js');
     this.template('_template.html', this.path + 'templates/' + this.widgetName + '.html');
     this.template('_test_page.html', this.path + 'tests/' + this.widgetName + 'Tests.html');
