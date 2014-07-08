@@ -23,8 +23,8 @@ describe('esri-widget generator', function() {
       'app/test.js',
       'app/templates/test.html',
       'app/tests/tests.css',
-      'app/tests/testTests.html',
-      'app/tests/spec/Spectest.js',
+      'app/tests/testTest.html',
+      'app/tests/spec/testSpec.js',
       'app/resources/test.css'
     ];
 

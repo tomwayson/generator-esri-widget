@@ -1,4 +1,4 @@
-require([
+define([
   '<%= path %><%= widgetName %>',
 
   'dojo/dom-construct'
@@ -10,8 +10,10 @@ require([
   describe('<%= path %><%= widgetName %>', function() {
     var widget;
     var destroy = function (widget) {
-      widget.destroyRecursive();
-      widget = null;
+      if (widget && widget.destroyRecursive) {
+        widget.destroyRecursive();
+        widget = null;
+      }
     };
 
     beforeEach(function() {
@@ -19,14 +21,12 @@ require([
     });
 
     afterEach(function() {
-      if (widget) {
-        destroy(widget);
-      }
+      destroy(widget);
     });
 
     describe('Sanity', function() {
       it('should create a <%= widgetName %>', function() {
-        expect(widget).toEqual(jasmine.any(WidgetUnderTest));
+        expect(widget).to.be.a(WidgetUnderTest);
       });
     });
   });
