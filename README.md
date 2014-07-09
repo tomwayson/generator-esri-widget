@@ -2,6 +2,8 @@
 
 > [Yeoman](http://yeoman.io) generator to create custom Dojo widgets for Esri web applications.
 
+**Not to be confused with [Esri/generator-esri-appbuilder-js](http://github.com/Esri/generator-esri-appbuilder-js) which scaffolds out widgets specifically for the ArcGIS Web AppBuilder**
+
 ## About
 
 This generator scaffolds out the boilerplate files that are need each time you create a new custom Dojo widget for a web application using Esri's ArcGIS API for JavaScript.
