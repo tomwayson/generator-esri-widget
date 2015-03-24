@@ -17,24 +17,52 @@
     <div id="widgetContainer">
         <div id="widgetNode"></div>
     </div>
-    <script src="//js.arcgis.com/3.13"></script>
+    <script src="//js.arcgis.com/3.13/"></script>
     <script type="text/javascript">
         var testsUrl = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/')) + '/';
         var widgetUnderTest;
         var map;
 
-        require(["esri/map",
-            testsUrl + "../<%= widgetName %>.js",
-            "dojo/domReady!"
-        ], function(Map, Module) {
+        require([
+          <% if (testPageMap === 1) { %>
+          'esri/map',
+          <% } else if (testPageMap === 2) { %>
+          'esri/arcgis/utils',
+          <% } %>
+            testsUrl + '../<%= widgetName %>.js',
+            'dojo/domReady!'
+        ], function(
+          <% if (testPageMap === 1) { %>
+          Map,
+          <% } else if (testPageMap === 2) { %>
+          arcgisUtils,
+          <% } %>
+          Module
+        ) {
 
+
+          <% if (testPageMap) { %>
             // init map
-            map = new Map("map",{
-                basemap: "topo",
+            var mapOptions = {
+                basemap: 'topo',
                 center: [-122.45,37.75],
                 zoom: 13,
-                sliderStyle: "small"
+                sliderStyle: 'small'
+            };
+            <% if (testPageMap === 1) { %>
+            map = new Map('map', mapOptions);
+            <% } else if (testPageMap === 2) { %>
+            // this web map id is a placeholder
+            // with only the topo basemap
+            // replace it with the id of your web map
+            var webMapItemID = '6e03e8c26aad4b9c92a87c1063ddb0e3';
+            arcgisUtils.createMap(webMapItemID, 'map', {
+              mapOptions: mapOptions
+            }).then(function(response) {
+              map = response.map;
             });
+            <% } %>
+          <% } %>
 
             // init widget
             widgetUnderTest = new Module({

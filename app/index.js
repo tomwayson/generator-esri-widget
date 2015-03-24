@@ -6,6 +6,8 @@ var DojoWidgetGenerator = yeoman.generators.Base.extend({
   askFor: function() {
     var done = this.async();
 
+    var testPageMapChoices = [ 'No map', 'Empty map - i.e. new Map()', 'Web map - i.e. arcgisUtils.createMap()' ];
+
     // have Yeoman greet the user
     console.log(this.yeoman);
 
@@ -30,6 +32,12 @@ var DojoWidgetGenerator = yeoman.generators.Base.extend({
       name: 'widgetsInTemplate',
       message: 'Will the template contain other widgets?',
       'default': true
+    }, {
+      type: 'list',
+      name: 'testPageMap',
+      message: 'What kind of map would you like in the test page?',
+      choices: testPageMapChoices,
+      'default': 0
     }];
 
     this.prompt(prompts, function(props) {
@@ -37,6 +45,7 @@ var DojoWidgetGenerator = yeoman.generators.Base.extend({
       this.description = props.description;
       this.path = props.path + '/';
       this.widgetsInTemplate = props.widgetsInTemplate;
+      this.testPageMap = testPageMapChoices.indexOf(props.testPageMap);
       this.consoleLog = this.path + this.widgetName;
       this.consoleLog = this.consoleLog.replace(/\//g, '.');
       var splitPath = this.path.split('/');
