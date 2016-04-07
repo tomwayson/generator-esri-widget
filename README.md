@@ -53,7 +53,7 @@ A few opinionated files will be created. If you created a widget called `test` i
 The `/test.js` file will contain your widget logic.
 `/templates/test.html` will be an empty template file if your widget has a template.
 `tests/testTests.html` is an html page that you can load to see your widget in isolation.
-`tests/spec/Spectest.js` is a [mocha](http://visionmedia.github.io/mocha/) test spec file with a default test instantiating your new widget.
+`tests/spec/Spectest.js` is a [mocha](http://mochajs.org/) test spec file with a default test instantiating your new widget.
 `tests/test.css` is the style sheet containing styles specific to your new widget.
 `resources/test.css` is the style sheet containing styles specific to your new widget.
 
