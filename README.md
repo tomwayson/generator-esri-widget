@@ -13,7 +13,7 @@ This generator scaffolds out the boilerplate files that are need each time you c
 This generator was <del>stolen</del> forked and adapted from [@steveoh](https://github.com/steveoh)'s [generator-dojo-widget](https://github.com/steveoh/generator-dojo-widget). I've been using that generator for a while now, and it does an excellent job of scaffolding out the files needed for a Dojo widget. However, I found myself making the same changes to those files each time I ran it, so I wanted to change the generator so that it would:
 
 * Include a map in the test page by default
-* Write the spec tests with [mocha](https://github.com/mochajs/mocha) instead of [jasmine](http://jasmine.github.io/)
+* Write the spec tests with [mocha] instead of [jasmine](http://jasmine.github.io/)
 * Indent using 2 spaces instead of 4 for .js files, 'cause a hata's gotta hate.
 
 Since these are *my* preferences and I didn't think that they would make their way back into the original generator, I decided to make my fork its own source with a new name - with nothing but love and respect for [@steveoh](https://github.com/steveoh).
@@ -53,10 +53,12 @@ A few opinionated files will be created. If you created a widget called `test` i
 The `/test.js` file will contain your widget logic.
 `/templates/test.html` will be an empty template file if your widget has a template.
 `tests/testTests.html` is an html page that you can load to see your widget in isolation.
-`tests/spec/Spectest.js` is a [mocha](https://github.com/mochajs/mocha) test spec file with a default test instantiating your new widget.
+`tests/spec/Spectest.js` is a [mocha] test spec file with a default test instantiating your new widget.
 `tests/test.css` is the style sheet containing styles specific to your new widget.
 `resources/test.css` is the style sheet containing styles specific to your new widget.
 
 ## License
 
 MIT
+
+[mocha]:http://mochajs.org/
