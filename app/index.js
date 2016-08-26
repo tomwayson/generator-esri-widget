@@ -7,6 +7,8 @@ var DojoWidgetGenerator = yeoman.generators.Base.extend({
     var done = this.async();
 
     var testPageMapChoices = [ 'No map', 'Empty map - i.e. new Map()', 'Web map - i.e. arcgisUtils.createMap()' ];
+	
+	var languageChoices = [ 'JavaScript', 'TypeScript'];
 
     // have Yeoman greet the user
     console.log(this.yeoman);
@@ -38,6 +40,12 @@ var DojoWidgetGenerator = yeoman.generators.Base.extend({
       message: 'What kind of map would you like in the test page?',
       choices: testPageMapChoices,
       'default': 0
+    },{
+      type: 'list',
+      name: 'languageChoice',
+      message: 'What language would you like to use?',
+      choices: languageChoices,
+      'default': 0
     }];
 
     this.prompt(prompts, function(props) {
@@ -46,6 +54,7 @@ var DojoWidgetGenerator = yeoman.generators.Base.extend({
       this.path = props.path + '/';
       this.widgetsInTemplate = props.widgetsInTemplate;
       this.testPageMap = testPageMapChoices.indexOf(props.testPageMap);
+	  this.language = languageChoices.indexOf(props.languageChoice);
       this.consoleLog = this.path + this.widgetName;
       this.consoleLog = this.consoleLog.replace(/\//g, '.');
       var splitPath = this.path.split('/');
@@ -54,14 +63,14 @@ var DojoWidgetGenerator = yeoman.generators.Base.extend({
       for (var x = 0; x < splitPath.length; x++) {
         this.testPageBaseUrl += '../';
       }
-
       done();
     }.bind(this));
   },
 
   app: function() {
     this.copy('tests.css', this.path + 'tests/tests.css');
-    this.template('_widget.js', this.path + this.widgetName + '.js');
+	var ext = (this.language === 0) ? ".js":".ts";
+    this.template('_widget' +  ext, this.path + this.widgetName + ext);
     this.template('_template.html', this.path + 'templates/' + this.widgetName + '.html');
     this.template('_test_page.html', this.path + 'tests/' + this.widgetName + 'Test.html');
     this.template('_spec.js', this.path + 'tests/spec/' + this.widgetName + 'Spec.js');

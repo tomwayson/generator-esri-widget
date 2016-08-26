@@ -38,7 +38,8 @@ describe('esri-widget generator', function() {
       'widgetName': 'test',
       'description': 'test description',
       'path': 'app',
-      'widgetsInTemplate': true
+      'widgetsInTemplate': true,
+	  'languageChoice': 'JavaScript'
     });
 
     this.app.options['skip-install'] = true;
@@ -57,7 +58,8 @@ describe('esri-widget generator', function() {
       'description': 'test description',
       'path': 'app',
       'widgetsInTemplate': true,
-      'testPageMap': 'Empty map - i.e. new Map()'
+      'testPageMap': 'Empty map - i.e. new Map()',
+	  'languageChoice': 'JavaScript'
     });
 
     this.app.options['skip-install'] = true;
@@ -76,7 +78,8 @@ describe('esri-widget generator', function() {
       'description': 'test description',
       'path': 'app',
       'widgetsInTemplate': true,
-      'testPageMap': 'Web map - i.e. arcgisUtils.createMap()'
+      'testPageMap': 'Web map - i.e. arcgisUtils.createMap()',
+	  'languageChoice': 'JavaScript'
     });
 
     this.app.options['skip-install'] = true;
@@ -84,6 +87,33 @@ describe('esri-widget generator', function() {
       helpers.assertFile(expectedFiles);
       // create empty map in the test page
       helpers.assertFileContent('app/tests/testTest.html', /map\W?=\W?response\.map;/);
+      done();
+    });
+  });
+  
+  it('creates a TypeScript Widget when run in TS mode', function(done) {
+
+    helpers.mockPrompt(this.app, {
+      'widgetName': 'test',
+      'description': 'test description',
+      'path': 'app',
+      'widgetsInTemplate': true,
+      'testPageMap': 'Web map - i.e. arcgisUtils.createMap()',
+	  'languageChoice': 'TypeScript'
+    });
+
+    this.app.options['skip-install'] = true;
+    this.app.run({}, function() {
+	  var expectedFilesTs = [
+		  // expected files for TS
+		  'app/test.ts',
+		  'app/templates/test.html',
+		  'app/tests/tests.css',
+		  'app/tests/testTest.html',
+		  'app/tests/spec/testSpec.js',
+		  'app/resources/test.css'
+	  ];
+      helpers.assertFile(expectedFilesTs);
       done();
     });
   });
