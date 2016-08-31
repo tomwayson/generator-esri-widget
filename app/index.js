@@ -85,7 +85,6 @@ var DojoWidgetGenerator = yeoman.generators.Base.extend({
     if(this.testFramework === 0) {
       //Jasmine
        this.template('_specJasmine.js', this.path + 'tests/spec/' + this.widgetName + 'Spec.js');
-         console.log('Jasmine');
     } else{
        this.template('_spec.js', this.path + 'tests/spec/' + this.widgetName + 'Spec.js');
     }
