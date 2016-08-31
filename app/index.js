@@ -7,8 +7,10 @@ var DojoWidgetGenerator = yeoman.generators.Base.extend({
     var done = this.async();
 
     var testPageMapChoices = [ 'No map', 'Empty map - i.e. new Map()', 'Web map - i.e. arcgisUtils.createMap()' ];
-	
-	var languageChoices = [ 'JavaScript', 'TypeScript'];
+
+    var languageChoices = [ 'JavaScript', 'TypeScript'];
+
+    var testingFrameworks = [ 'Jasmine', 'Mocha'];
 
     // have Yeoman greet the user
     console.log(this.yeoman);
@@ -46,6 +48,12 @@ var DojoWidgetGenerator = yeoman.generators.Base.extend({
       message: 'What language would you like to use?',
       choices: languageChoices,
       'default': 0
+    },{
+      type: 'list',
+      name: 'testFramwork',
+      message: 'What test framework would you like to use?',
+      choices: testingFrameworks,
+      'default': 0
     }];
 
     this.prompt(prompts, function(props) {
@@ -54,7 +62,8 @@ var DojoWidgetGenerator = yeoman.generators.Base.extend({
       this.path = props.path + '/';
       this.widgetsInTemplate = props.widgetsInTemplate;
       this.testPageMap = testPageMapChoices.indexOf(props.testPageMap);
-	  this.language = languageChoices.indexOf(props.languageChoice);
+      this.language = languageChoices.indexOf(props.languageChoice);
+      this.testFramework = testingFrameworks.indexOf(props.testFramwork);      
       this.consoleLog = this.path + this.widgetName;
       this.consoleLog = this.consoleLog.replace(/\//g, '.');
       var splitPath = this.path.split('/');
@@ -69,11 +78,18 @@ var DojoWidgetGenerator = yeoman.generators.Base.extend({
 
   app: function() {
     this.copy('tests.css', this.path + 'tests/tests.css');
-	var ext = (this.language === 0) ? ".js":".ts";
+    var ext = (this.language === 0) ? ".js":".ts";
     this.template('_widget' +  ext, this.path + this.widgetName + ext);
     this.template('_template.html', this.path + 'templates/' + this.widgetName + '.html');
     this.template('_test_page.html', this.path + 'tests/' + this.widgetName + 'Test.html');
-    this.template('_spec.js', this.path + 'tests/spec/' + this.widgetName + 'Spec.js');
+    if(this.testFramework === 0) {
+      //Jasmine
+       this.template('_specJasmine.js', this.path + 'tests/spec/' + this.widgetName + 'Spec.js');
+         console.log('Jasmine');
+    } else{
+       this.template('_spec.js', this.path + 'tests/spec/' + this.widgetName + 'Spec.js');
+    }
+   
     this.template('_widget.css', this.path + 'resources/' + this.widgetName + '.css');
   },
 

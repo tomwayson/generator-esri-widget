@@ -39,7 +39,8 @@ describe('esri-widget generator', function() {
       'description': 'test description',
       'path': 'app',
       'widgetsInTemplate': true,
-	  'languageChoice': 'JavaScript'
+      'languageChoice': 'JavaScript',
+      'testFramwork' : 'Jasmine'
     });
 
     this.app.options['skip-install'] = true;
@@ -59,7 +60,8 @@ describe('esri-widget generator', function() {
       'path': 'app',
       'widgetsInTemplate': true,
       'testPageMap': 'Empty map - i.e. new Map()',
-	  'languageChoice': 'JavaScript'
+      'languageChoice': 'JavaScript',
+      'testFramwork' : 'Jasmine'
     });
 
     this.app.options['skip-install'] = true;
@@ -79,7 +81,8 @@ describe('esri-widget generator', function() {
       'path': 'app',
       'widgetsInTemplate': true,
       'testPageMap': 'Web map - i.e. arcgisUtils.createMap()',
-	  'languageChoice': 'JavaScript'
+      'languageChoice': 'JavaScript',
+      'testFramwork' : 'Jasmine'
     });
 
     this.app.options['skip-install'] = true;
@@ -99,21 +102,64 @@ describe('esri-widget generator', function() {
       'path': 'app',
       'widgetsInTemplate': true,
       'testPageMap': 'Web map - i.e. arcgisUtils.createMap()',
-	  'languageChoice': 'TypeScript'
+      'languageChoice': 'TypeScript',
+      'testFramwork' : 'Jasmine'
     });
 
     this.app.options['skip-install'] = true;
     this.app.run({}, function() {
-	  var expectedFilesTs = [
-		  // expected files for TS
-		  'app/test.ts',
-		  'app/templates/test.html',
-		  'app/tests/tests.css',
-		  'app/tests/testTest.html',
-		  'app/tests/spec/testSpec.js',
-		  'app/resources/test.css'
-	  ];
+      var expectedFilesTs = [
+        // expected files for TS
+        'app/test.ts',
+        'app/templates/test.html',
+        'app/tests/tests.css',
+        'app/tests/testTest.html',
+        'app/tests/spec/testSpec.js',
+        'app/resources/test.css'
+      ];
       helpers.assertFile(expectedFilesTs);
+      done();
+    });
+  });
+
+  it('creates a Jasmine test', function(done) {
+
+    helpers.mockPrompt(this.app, {
+      'widgetName': 'test',
+      'description': 'test description',
+      'path': 'app',
+      'widgetsInTemplate': true,
+      'testPageMap': 'Web map - i.e. arcgisUtils.createMap()',
+      'languageChoice': 'JavaScript',
+      'testFramwork' : 'Jasmine'
+    });
+
+    this.app.options['skip-install'] = true;
+    this.app.run({}, function() {
+      helpers.assertFile(expectedFiles);
+      // check the file is a jasmine file
+      helpers.assertFileContent('app/tests/spec/testSpec.js', /jasmine\W/);
+      done();
+    });
+  });
+
+  it('creates a Mocha test', function(done) {
+
+    helpers.mockPrompt(this.app, {
+      'widgetName': 'test',
+      'description': 'test description',
+      'path': 'app',
+      'widgetsInTemplate': true,
+      'testPageMap': 'Web map - i.e. arcgisUtils.createMap()',
+      'languageChoice': 'JavaScript',
+      'testFramwork' : 'Mocha'
+    });
+
+    this.app.options['skip-install'] = true;
+    this.app.run({}, function() {
+      helpers.assertFile(expectedFiles);
+      // check the file is a Mocha file. Is there a better way to test this?
+      helpers.assertFileContent('app/tests/spec/testSpec.js', /.to.be.a\W/);
       done();
     });
   });
