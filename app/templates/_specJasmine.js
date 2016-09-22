@@ -1,4 +1,4 @@
-require([
+define([
     '<%= path %><%= widgetName %>',
 
     'dojo/dom-construct'

@@ -78,12 +78,12 @@ var DojoWidgetGenerator = yeoman.generators.Base.extend({
 
   app: function() {
     this.copy('tests.css', this.path + 'tests/tests.css');
-    var ext = (this.language === 0) ? ".js":".ts";
+    var ext = (this.language === 0) ? '.js' : '.ts';
     this.template('_widget' +  ext, this.path + this.widgetName + ext);
     this.template('_template.html', this.path + 'templates/' + this.widgetName + '.html');
     this.template('_test_page.html', this.path + 'tests/' + this.widgetName + 'Test.html');
     if(this.testFramework === 0) {
-      //Jasmine
+       //Jasmine 
        this.template('_specJasmine.js', this.path + 'tests/spec/' + this.widgetName + 'Spec.js');
     } else{
        this.template('_spec.js', this.path + 'tests/spec/' + this.widgetName + 'Spec.js');
